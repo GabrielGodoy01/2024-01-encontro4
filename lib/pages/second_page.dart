@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navigation_stateful_project/components/item_component.dart';
 
 class SecondPage extends StatefulWidget {
   const SecondPage({super.key});
@@ -8,7 +9,8 @@ class SecondPage extends StatefulWidget {
 }
 
 class _SecondPageState extends State<SecondPage> {
-  int contador = 0;
+  List<int> contador = [0, 1];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,13 +18,14 @@ class _SecondPageState extends State<SecondPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(contador.toString()),
+            ItemComponent(
+              contador: contador[0],
+            ),
             ElevatedButton(
               onPressed: () {
                 setState(() {
-                  contador = contador + 1;
+                  contador.add(contador.length);
                 });
-                // print(contador);
               },
               child: const Text('Increment Counter'),
             ),
